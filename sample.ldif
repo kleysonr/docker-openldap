@@ -1,0 +1,73 @@
+# ldapadd -x -D "cn=admin,dc=example,dc=com" -w admin -H ldap:// -f sample.ldif
+
+dn: ou=system,dc=example,dc=com
+objectClass: extensibleObject
+objectClass: organizationalUnit
+objectClass: top
+ou: system
+
+dn: ou=users,ou=system,dc=example,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: users
+
+dn: ou=customer1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: customer1
+
+dn: cn=Brain,ou=customer1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Brain
+sn: Collins
+userPassword:: e1NTSEF9UU1jdzNoa3Y5anM5bzRWSkMxQUJvckIrOURYWnExdFZ4WllXZHc9PQ==
+
+dn: cn=Peter,ou=customer1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Peter
+sn: John
+userPassword:: e1NTSEF9U1JJR0NGaXVlQTNWWEp6N1F4ODRlRTBBMlJLbURyaTM0cXNWSFE9PQ==
+
+dn: ou=customer2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: customer2
+
+dn: cn=Maria,ou=customer2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Maria
+sn: Velasquez
+userPassword:: e1NTSEF9M3RkeVBoK2RNNkdlUm5MNGwvaXBmNFZ4bFhobm41VnV0NXhad1E9PQ==
+
+dn: cn=Sara,ou=customer2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+cn: Sara
+sn: Lees
+userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
+
+dn: ou=groups,ou=system,dc=example,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+dn: cn=finance,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: finance
+uniqueMember: cn=Brain,ou=customer1,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Maria,ou=customer2,ou=users,ou=system,dc=example,dc=com
+
+dn: cn=operational,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: operational
+uniqueMember: cn=Sara,ou=customer2,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Peter,ou=customer1,ou=users,ou=system,dc=example,dc=com
