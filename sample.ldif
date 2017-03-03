@@ -89,12 +89,14 @@ userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
 dn: cn=finance,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
+o: shared
 uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
 dn: cn=operational,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
+o: shared
 uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 
@@ -104,6 +106,7 @@ uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 dn: cn=marketing-t1,ou=tenant1,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
+o: tenant1
 uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 
@@ -113,6 +116,7 @@ uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 dn: cn=marketing-t2,ou=tenant2,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
+o: tenant2
 uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
@@ -131,4 +135,5 @@ userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
 dn: cn=Administrator,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
+o: shared
 uniqueMember: cn=PentahoAdmin,ou=users,ou=system,dc=example,dc=com
