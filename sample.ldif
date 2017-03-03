@@ -1,73 +1,134 @@
 # ldapadd -x -D "cn=admin,dc=example,dc=com" -w admin -H ldap:// -f sample.ldif
 
+#
+# LDAP Base
+#
 dn: ou=system,dc=example,dc=com
 objectClass: extensibleObject
 objectClass: organizationalUnit
 objectClass: top
-ou: system
 
+#
+# Users and Groups Base
+#
 dn: ou=users,ou=system,dc=example,dc=com
 objectClass: organizationalUnit
 objectClass: top
-ou: users
-
-dn: ou=customer1,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: organizationalUnit
-ou: customer1
-
-dn: cn=Brain,ou=customer1,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: person
-objectClass: organizationalPerson
-cn: Brain
-sn: Collins
-userPassword:: e1NTSEF9UU1jdzNoa3Y5anM5bzRWSkMxQUJvckIrOURYWnExdFZ4WllXZHc9PQ==
-
-dn: cn=Peter,ou=customer1,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: person
-objectClass: organizationalPerson
-cn: Peter
-sn: John
-userPassword:: e1NTSEF9U1JJR0NGaXVlQTNWWEp6N1F4ODRlRTBBMlJLbURyaTM0cXNWSFE9PQ==
-
-dn: ou=customer2,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: organizationalUnit
-ou: customer2
-
-dn: cn=Maria,ou=customer2,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: person
-objectClass: organizationalPerson
-cn: Maria
-sn: Velasquez
-userPassword:: e1NTSEF9M3RkeVBoK2RNNkdlUm5MNGwvaXBmNFZ4bFhobm41VnV0NXhad1E9PQ==
-
-dn: cn=Sara,ou=customer2,ou=users,ou=system,dc=example,dc=com
-objectClass: top
-objectClass: person
-objectClass: organizationalPerson
-cn: Sara
-sn: Lees
-userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
 
 dn: ou=groups,ou=system,dc=example,dc=com
 objectClass: organizationalUnit
 objectClass: top
-ou: groups
 
+#
+# User Tenants Base
+#
+dn: ou=tenant1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=tenant2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+
+#
+# Group Tenants Base
+#
+dn: ou=tenant1,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=tenant2,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: organizationalUnit
+
+#
+# Users for Tenant1
+#
+dn: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Collins
+uid: brain
+userPassword:: e1NTSEF9UU1jdzNoa3Y5anM5bzRWSkMxQUJvckIrOURYWnExdFZ4WllXZHc9PQ==
+
+dn: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: John
+uid: peter
+userPassword:: e1NTSEF9U1JJR0NGaXVlQTNWWEp6N1F4ODRlRTBBMlJLbURyaTM0cXNWSFE9PQ==
+
+#
+# Users for Tenant2
+#
+dn: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Velasquez
+uid: maria
+userPassword:: e1NTSEF9M3RkeVBoK2RNNkdlUm5MNGwvaXBmNFZ4bFhobm41VnV0NXhad1E9PQ==
+
+dn: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Lee
+uid: sara
+userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
+
+#
+# Shared Groups
+#
 dn: cn=finance,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-cn: finance
-uniqueMember: cn=Brain,ou=customer1,ou=users,ou=system,dc=example,dc=com
-uniqueMember: cn=Maria,ou=customer2,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
 dn: cn=operational,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-cn: operational
-uniqueMember: cn=Sara,ou=customer2,ou=users,ou=system,dc=example,dc=com
-uniqueMember: cn=Peter,ou=customer1,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+
+#
+# Tenant1 Groups
+#
+dn: cn=marketing-t1,ou=tenant1,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
+
+#
+# Tenant2 Groups
+#
+dn: cn=marketing-t2,ou=tenant2,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
+uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
+
+#
+# User Administrator and Administrator Group for the Pentaho
+#
+dn: cn=PentahoAdmin,ou=users,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Adminstrator
+uid: admin
+userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
+
+dn: cn=Administrator,ou=groups,ou=system,dc=example,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+uniqueMember: cn=PentahoAdmin,ou=users,ou=system,dc=example,dc=com
