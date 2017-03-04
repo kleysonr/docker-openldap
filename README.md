@@ -46,7 +46,7 @@ Pentaho Server
 - Copy recursively the **pentaho-server** folder to **install_pentaho_folder/pentaho-server** folder
 
 - Clear the jackrabbit repository
-> rm -rf install_pentaho_folder/pentaho-server/pentaho-solutions/system/jackrabbit/repository/\*
+> rm -rf **``install_pentaho_folder/pentaho-server/pentaho-solutions/system/jackrabbit/repository/\*``**
 
 #### <i class="icon-folder-open"></i> Users/Groups sub-directories
 
@@ -56,7 +56,7 @@ By default, Pentaho doesn't list those users and groups belonging under sub tree
 
 To enable Pentaho search recursively the users and groups, follow the steps:
 
-- Edit the install_pentaho_folder/pentaho-solutions/system/pentaho-spring-beans.xml file
+- Edit the **``install_pentaho_folder/pentaho-solutions/system/pentaho-spring-beans.xml``** file
 
 - Search for the line **``<import resource="pentahoObjects.spring.xml" />``** and add the following configuration before it
 >**``<import resource="applicationContext-pentaho-security-ldap-custom.xml" />``**
