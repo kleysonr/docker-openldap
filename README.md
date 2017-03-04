@@ -21,15 +21,14 @@ LDAP Server
 - Build you docker image using the Dockerfile as base, or
  
 - Use the docker compose to manage the container based on a built image available on the Hub Docker (https://hub.docker.com/r/kleysonr/openldap/)
-
 > **docker-compose up**
 >
 >Creates a fresh openldap container.
- 
+> 
 > **docker-compose stop**
 >
 >Stops a running openldap container.
-
+>
 > **docker-compose start**
 >
 >Resumes a openldap container.
