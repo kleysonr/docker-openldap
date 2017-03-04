@@ -1,7 +1,7 @@
 Overview
 -------------
 
-To Enable LDAP authentication/authorization on Pentaho, it's necessary a LDAP server as well as do some configurations on the BA Server.
+To enable LDAP authentication/authorization on Pentaho, it's necessary a LDAP server as well as do some configurations on the BA Server.
 
 This repository allows you to create a fully functional LDAP server using docker.
 
