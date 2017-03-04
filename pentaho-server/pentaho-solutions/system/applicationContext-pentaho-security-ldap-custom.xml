@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:pen="http://www.pentaho.com/schema/pentaho-system"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.pentaho.com/schema/pentaho-system http://www.pentaho.com/schema/pentaho-system.xsd">
+
+  <bean id="customSearchControls" class="javax.naming.directory.SearchControls">
+    <constructor-arg index="0" value="2" /> <!-- OBJECT_SCOPE = 0, ONELEVEL_SCOPE = 1 (Default), SUBTREE_SCOPE = 2 -->
+    <constructor-arg index="1" value="0" />
+    <constructor-arg index="2" value="0" />
+    <constructor-arg index="3">
+        <null />
+    </constructor-arg>
+    <constructor-arg index="4" value="false" />
+    <constructor-arg index="5" value="false" />
+  </bean>
+
+  <!-- Overwrite default bean to include the SearchControl -->
+  <!-- be sure to escape ampersands -->
+  <bean id="allUsernamesSearch" class="org.pentaho.platform.plugin.services.security.userrole.ldap.search.GenericLdapSearch">
+    <constructor-arg index="0" ref="contextSource" />
+    <constructor-arg index="1">
+      <bean class="org.pentaho.platform.plugin.services.security.userrole.ldap.search.LdapSearchParamsFactoryImpl">
+        <constructor-arg index="0" value="${ldap.allUsernamesSearch.searchBase}" />
+        <constructor-arg index="1" value="${ldap.allUsernamesSearch.searchFilter}" />
+	<constructor-arg index="2" ref="customSearchControls" /> <!-- Added to change the scope of the search -->
+      </bean>
+    </constructor-arg>
+    <constructor-arg index="2">
+      <bean class="org.pentaho.platform.plugin.services.security.userrole.ldap.transform.SearchResultToAttrValueList">
+        <constructor-arg index="0" value="${ldap.allUsernamesSearch.usernameAttribute}" />
+      </bean>
+    </constructor-arg>
+  </bean>
+
+  <!-- Overwrite default bean to include the SearchControl -->
+  <!-- be sure to escape ampersands -->
+  <bean id="allAuthoritiesSearch" class="org.pentaho.platform.plugin.services.security.userrole.ldap.search.GenericLdapSearch">
+    <constructor-arg index="0" ref="contextSource" />
+    <constructor-arg index="1">
+      <bean class="org.pentaho.platform.plugin.services.security.userrole.ldap.search.LdapSearchParamsFactoryImpl">
+        <constructor-arg index="0" value="${ldap.allAuthoritiesSearch.searchBase}" />
+        <constructor-arg index="1" value="${ldap.allAuthoritiesSearch.searchFilter}" />
+	<constructor-arg index="2" ref="customSearchControls" /> <!-- Added to change the scope of the search -->
+      </bean>
+    </constructor-arg>
+    <constructor-arg index="2">
+      <bean class="org.apache.commons.collections.functors.ChainedTransformer">
+        <constructor-arg index="0">
+          <list>
+            <bean class="org.pentaho.platform.plugin.services.security.userrole.ldap.transform.SearchResultToAttrValueList">
+              <constructor-arg index="0" value="${ldap.allAuthoritiesSearch.roleAttribute}" />
+            </bean>
+            <bean class="org.pentaho.platform.plugin.services.security.userrole.ldap.transform.StringToGrantedAuthority">
+              <property name="rolePrefix" value="${ldap.populator.rolePrefix}" />
+              <property name="convertToUpperCase" value="${ldap.populator.convertToUpperCase}" />
+            </bean>
+          </list>
+        </constructor-arg>
+      </bean>
+    </constructor-arg>
+  </bean>
+
+</beans>
