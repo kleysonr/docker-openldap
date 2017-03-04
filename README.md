@@ -47,6 +47,11 @@ Pentaho Server
 - Clear the jackrabbit repository
 > rm -rf **``install_pentaho_folder/pentaho-server/pentaho-solutions/system/jackrabbit/repository/*``**
 
+- Load the users and groups into LDAP server
+> ``docker exec -it openldap /bin/bash``
+>
+> ``ldapadd -x -D "cn=admin,dc=example,dc=com" -w admin -H ldap:// -f /sample.ldif``
+
 #### <i class="icon-folder-open"></i> Users/Groups sub-directories
 
 When it's necessary set some access permission, you can choose the user(s) and/or role(s) from a list.
