@@ -65,13 +65,13 @@ To enable Pentaho search recursively the users and groups, follow the steps:
 
 - Logs in using some of the users:
 > admin:password
-
+>
 > sara:password
-
+>
 > maria:password
-
+>
 > brain:password
-
+>
 > peter:password
 
 ----------
