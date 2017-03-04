@@ -46,7 +46,7 @@ Pentaho Server
 - Copy recursively the **pentaho-server** folder to **install_pentaho_folder/pentaho-server** folder
 
 - Clear the jackrabbit repository
-> rm -rf **``install_pentaho_folder/pentaho-server/pentaho-solutions/system/jackrabbit/repository/\*``**
+> rm -rf **``install_pentaho_folder/pentaho-server/pentaho-solutions/system/jackrabbit/repository/*``**
 
 #### <i class="icon-folder-open"></i> Users/Groups sub-directories
 
