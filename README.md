@@ -18,7 +18,7 @@ LDAP Server
 
 - Clone or download this repository.
 
-- Build you docker image using the Dockerfile as base, or
+- Build your docker image using the Dockerfile as base, or
  
 - Use the docker compose to manage the container based on a built image available on the Hub Docker (https://hub.docker.com/r/kleysonr/openldap/)
 > **docker-compose up**
@@ -83,4 +83,4 @@ To enable Pentaho search recursively the users and groups, follow the steps:
 Note
 -------------
 
-To avoid changing additional config files on Pentaho, was kept on LDAP base the same name for the administrator user (admin) and group (Administrator).
+To avoid changing additional config files on Pentaho, was kept on LDAP the same name for the administrator user (admin) and group (Administrator).
