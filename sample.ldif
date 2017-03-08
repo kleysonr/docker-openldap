@@ -101,7 +101,7 @@ organizationName: tenant2
 dn: cn=finance,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: pentaho
+organizationName: pentaho
 uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
