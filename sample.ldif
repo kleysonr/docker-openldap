@@ -49,18 +49,24 @@ objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
+givenName: Brain
 sn: Collins
+mail: brain@tenant1.com
 uid: brain
 userPassword:: e1NTSEF9UU1jdzNoa3Y5anM5bzRWSkMxQUJvckIrOURYWnExdFZ4WllXZHc9PQ==
+organizationName: tenant1
 
 dn: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
+givenName: Peter
 sn: John
+mail: peter@tenant1.com
 uid: peter
 userPassword:: e1NTSEF9U1JJR0NGaXVlQTNWWEp6N1F4ODRlRTBBMlJLbURyaTM0cXNWSFE9PQ==
+organizationName: tenant1
 
 #
 # Users for Tenant2
@@ -70,18 +76,24 @@ objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
+givenName: Maria
 sn: Velasquez
+mail: maria@tenant2.com
 uid: maria
 userPassword:: e1NTSEF9M3RkeVBoK2RNNkdlUm5MNGwvaXBmNFZ4bFhobm41VnV0NXhad1E9PQ==
+organizationName: tenant2
 
 dn: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
+givenName:Sara
 sn: Lee
+mail: sara@tenant2.com
 uid: sara
 userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
+organizationName: tenant2
 
 #
 # Shared Groups
@@ -89,14 +101,14 @@ userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
 dn: cn=finance,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: shared
+o: pentaho
 uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
 dn: cn=operational,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: shared
+organizationName: pentaho
 uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 
@@ -106,7 +118,7 @@ uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 dn: cn=marketing-t1,ou=tenant1,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: tenant1
+organizationName: tenant1
 uniqueMember: cn=Brain Collins,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 
@@ -116,7 +128,7 @@ uniqueMember: cn=Peter John,ou=tenant1,ou=users,ou=system,dc=example,dc=com
 dn: cn=marketing-t2,ou=tenant2,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: tenant2
+organizationName: tenant2
 uniqueMember: cn=Sara Lee,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 uniqueMember: cn=Maria Velasquez,ou=tenant2,ou=users,ou=system,dc=example,dc=com
 
@@ -131,9 +143,10 @@ objectClass: inetOrgPerson
 sn: Adminstrator
 uid: admin
 userPassword:: e1NTSEF9aWlRc2Y2TkpLek14T2Y5elc4T29JT2RUMVdsd2JkazFZaFp0R2c9PQ==
+organizationName: pentaho
 
 dn: cn=Administrator,ou=groups,ou=system,dc=example,dc=com
 objectClass: top
 objectClass: groupOfUniqueNames
-o: shared
+organizationName: pentaho
 uniqueMember: cn=PentahoAdmin,ou=users,ou=system,dc=example,dc=com
