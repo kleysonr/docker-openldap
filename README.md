@@ -84,3 +84,20 @@ Note
 -------------
 
 To avoid changing additional config files on Pentaho, was kept on LDAP the same name for the administrator user (admin) and group (Administrator).
+
+----------
+
+Enable debug logging
+-------------
+
+- Edit the **$SERVER_HOME/pentaho-server/tomcat/webapps/pentaho/WEB-INF/classes/log4j.xml** file.
+
+- Add the following log4j directives, save the file, then restart the server:
+
+> ``   <category name="org.springframework.security.ldap">``
+>
+> ``     <priority value="DEBUG"/>``
+>
+> ``   </category>``
+
+- Check the logs on the **logs/pentaho.log** file.
